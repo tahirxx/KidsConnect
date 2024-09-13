@@ -1,31 +1,32 @@
-import { useState } from 'react';
-import Login from './components/Login';
-import Register from './components/Register';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Dashboard from './pages/Dashboard';
+import MeetupPage from './components/MeetupPage';
+import ProfileSetting from './components/ProfileSetting';
+import "./App.css";
+import Searchbar from './components/Searchbar';
+import LoginRegister from './pages/LoginRegister';
 
-function App() {
-const [showLogin, setShowLogin] = useState(true);
-
-const handleToggle = () => {
-  setShowLogin(!showLogin); 
-};
+export default function App() {
 
   return (
-    <div className=" custom-bg">
-      <div>
-         <h1 className="title">KIDsConnect</h1>
+    <Router>
+      <div className='app-container'>
+        <Navigation />  {/* Navigation bar is always visible */}
+        <div className='content'>
+          <Searchbar />
+      <Routes>
+        {/* Route that always renders Dashboard */}
+        <Route path="/" element={<Dashboard />}>
+          <Route path="meetups" element={<MeetupPage />} />
+          <Route path="profile" element={<ProfileSetting />} />
+          <Route path="login" element={<LoginRegister />} />
+        </Route>
+      </Routes>
+       </div>
       </div>
-
-     <div>
-        {showLogin ? <Login /> : <Register />}
-      <button onClick={handleToggle}>
-        {showLogin ? "Switch to Register" : "Switch to Login"}
-      </button>
-    </div>
-   </div>
- 
-  )
+    </Router>
+  );
 }
 
-export default App
+

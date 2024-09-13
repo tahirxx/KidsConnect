@@ -3,17 +3,39 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0 auto;
   padding: 2rem;
+ 
+}
+
+.app-container {
+  display: flex;
+  height: 100vh; /* Make the container take the full viewport height */
+}
+
+/* Navbar */
+.navbar {
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+/* content */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  overflow-y: auto;
+}
+
+.login-container {
   text-align: center;
   justify-content: center;
   align-items: center;
   line-height: 1.5;
   font-weight: 400;
-  height: 100vh;
+  height: 70vh;
   display: flex;
-  background-color: #4ab7e2;
 }
-
-
 
 .custom-bg {
 display: block;
@@ -21,6 +43,13 @@ width: 100%;
 }
 
 .title {
-  font-size: 4rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
+/* searchbar icon */
+.searchbar {
+ width: 500px;
+ align-items: center;
+
+}
