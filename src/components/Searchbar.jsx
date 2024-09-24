@@ -5,20 +5,18 @@ export default function Searchbar() {
 
   return (
     <div className="searchbar ">
-     <InputGroup> 
-     
-         <Form.Control
+     <InputGroup className='w-'> 
+        <Form.Control
             type="text"
             placeholder="Search"
-           className="border-right-0"
+           className="border-right-0 w"
             // value={name}
             // onChange={(e) => setName(e.target.value)}
           />
           <Button variant="primary" type="submit" className="border-left-0">
             <i className="bi bi-search "></i>
           </Button>
-     
-  </InputGroup> 
+      </InputGroup> 
     </div>
   )
 }

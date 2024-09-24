@@ -53,66 +53,130 @@
 //     </div>
 //   );
 // }
+import soccerImage from '../assets/images/soccer.jpeg';
+import artImage from '../assets/images/art2.webp';
+import musicImage from '../assets/images/music.jpeg';
+import GroupInterest from '../components/GroupInterest';
+import kids from '../assets/images/KIDs4.png';
+import Footer from '../components/Footer';
+import play from '../assets/images/kids9.png';
+import { Carousel } from "react-bootstrap";
+import book from '../assets/images/book.jpg';
 
-
-
+const meetups = [
+  { id: 1, title: "Soccer Game", date: "Sept 25, 2024", location: "Central Park", time: "2:00PM", image: soccerImage },
+  { id: 2, title: "Art Class", date: "Sept 28, 2024", location: "Downtown Studio", time: "6:00PM", image: artImage  },
+  { id: 3, title: "Music Meetup", date: "Oct 2, 2024", location: "Community Hall", time: "4:00PM", image: musicImage },
+  { id: 4, title: "Book Club", date: "Oct 5, 2024", location: "Library", time: "3:00PM", image: book },
+  { id: 5, title: "Art Class", date: "Sept 28, 2024", location: "Downtown Studio", time: "6:00PM", image: artImage  },
+  { id: 6, title: "Soccer Game", date: "Sept 25, 2024", location: "Central Park", time: "2:00PM", image: soccerImage },
+];
 
 export default function Dashboard() {
+  
+
   return (
-    <div>
+    <div className="p-2">
     
-
-      {/* Upcoming Meetups Section */}
-      <div className="upcoming-meetups">
-        <h2>Upcoming Meetups</h2>
-        <ul>
-          <li>
-            <h3>Soccer Game Meetup</h3>
-            <p>Date: Sept 25, 2024</p>
-            <p>Time: 2:00 PM</p>
-            <p>Location: Central Park</p>
-            <button>RSVP</button>
-          </li>
-          {/* Add more meetups here */}
-        </ul>
-      </div>
-
       {/* My Groups Section */}
-      <div className="my-groups">
-        <h2>My Groups/Interests</h2>
-        <div className="group-tags">
-          <span className="tag">Sports</span>
-          <span className="tag">Music</span>
-          <span className="tag">Art</span>
-          <button>Create New Group</button>
-        </div>
+      <div className="group-interest-section">
+       <GroupInterest />
+      </div> 
+
+      <div className='m-4 p-4 d-flex w-100 align-items-center justify-content-center'>
+        <div className='w-75 .text-center'>
+        <h1>Connecting Kids, Empowering Parents</h1>
+        <p>A safe space for parents to organize meetups and help their kids bond over shared interests.</p>
+       
+        <button className='bg-primary text-white'>Join KIDsConnect</button>
+      </div>
+      <div className='w-25'><img src={kids} alt="" className='w-100'/></div>
       </div>
 
-      {/* Recent Activity Section */}
-      <div className="recent-activity">
-        <h2>Recent Activity</h2>
-        <ul>
-          <li>You RSVP'd to Soccer Game Meetup on Sept 10</li>
-          <li>New Meetup: Art Class on Sept 20</li>
-          <li>Message from Sarah: "Looking forward to the soccer game!"</li>
-        </ul>
+       {/* Upcoming Meetups Section with Carousel */}
+      <div className="upcoming-meetups bg-light p-2 my-4">
+        <h2 className="text-center">Upcoming Meetups</h2>
+        <Carousel controls={true} indicators={false}>
+          {meetups.map((meetup, index) => (
+            <Carousel.Item key={index}>
+              <div className="d-flex col-row-3 justify-content-around">
+                {meetups.slice(index, index + 3).map((meetup) => (
+                  <div key={meetup.id} className="text-center mx-2" style={{ width: "30%" }}>
+                    <img
+                      src={meetup.image}
+                      className="d-block w-100"
+                      alt={meetup.title}
+                    />
+                    <h3>{meetup.title}</h3>
+                    <p>Date: {meetup.date}</p>
+                    <p>Time: {meetup.time}</p>
+                    <p>Location: {meetup.location}</p>
+                    <button className="btn btn-outline-primary">Join Meetup</button>
+                  </div>
+                ))}
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </div>
+
+      {/* Reviews and Testimonials Section */}
+<div className="reviews-testimonials p-4">
+  <h2 className="mb-4 text-center font-weight-bold">What Parents Are Saying...</h2>
+
+  <div className="row">
+    <div className="col-md-4 mb-4">
+      <div className="testimonial-card p-4 shadow-lg border rounded bg-light h-100 d-flex flex-column">
+        <p className="review-text mb-4">
+          <em>Joining the soccer game was such a great experience for my son. He made new friends, and I connected with other parents. We are excited for the next meetup!</em>
+        </p>
+        <p className="review-author text-right mt-auto"><strong>– Jane D.</strong></p>
+      </div>
+    </div>
+
+    <div className="col-md-4 mb-4">
+      <div className="testimonial-card p-4 shadow-lg border rounded bg-light h-100 d-flex flex-column">
+        <p className="review-text mb-4">
+          <em>The art class meetup was well-organized and fun for my daughter. It was so easy to join, and I felt comfortable with the safety measures in place.</em>
+        </p>
+        <p className="review-author text-right mt-auto"><strong>– Emily S.</strong></p>
+      </div>
+    </div>
+
+    <div className="col-md-4 mb-4">
+      <div className="testimonial-card p-4 shadow-lg border rounded bg-light h-100 d-flex flex-column">
+        <p className="review-text mb-4">
+          <em>This app has been a lifesaver for planning activities. It helps me find the right events for my kids, and the community has been amazing.</em>
+        </p>
+        <p className="review-author text-right mt-auto"><strong>– Michael T.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* CTA Buttons */}
-      <div className="cta-buttons">
-        <button>Create a New Meetup</button>
-        <button>Join a New Group</button>
+      <div className="container bg-gray">
+      <div className="row align-items-center">
+        <div className="col-md-6 text-center">
+          <h2>Get Started Today</h2>
+          <div className="d-flex justify-content-center gap-2">
+            <button className="btn btn-primary btn-ml">
+              Create a New Meetup
+            </button>
+            <button className="btn btn-secondary btn-ml">
+              Join a New Group
+            </button>
+          </div>
+        </div>
+        <div className="col-md-6 d-flex justify-content-center">
+          <img src={play} alt="Call to Action" className="img-fluid" />
+        </div>
       </div>
+    </div>
 
       {/* Footer */}
-      <footer>
-        <p>&copy; 2024 MeetUp App. All Rights Reserved.</p>
-        <ul>
-          <li>Privacy Policy</li>
-          <li>Terms of Service</li>
-          <li>Contact Us</li>
-        </ul>
-      </footer>
+      <Footer />
     </div>
   );
 
