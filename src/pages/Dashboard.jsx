@@ -1,58 +1,4 @@
-// src/pages/Dashboard.jsx
-// import { useState, useEffect } from 'react';
-// import { collection, getDocs } from 'firebase/firestore';
-// import { db } from '../firebase';  // Adjust the import path as needed
-// import '../App.css';
 
-// export default function Dashboard() {
-//   const [groups, setGroups] = useState([]);
-//   const [meetups, setMeetups] = useState([]);
-
-//   useEffect(() => {
-//     const fetchGroups = async () => {
-//       const querySnapshot = await getDocs(collection(db, 'groups'));
-//       const groupsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-//       setGroups(groupsData);
-//     };
-
-//     const fetchMeetups = async () => {
-//       const querySnapshot = await getDocs(collection(db, 'meetups'));
-//       const meetupsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-//       setMeetups(meetupsData);
-//     };
-
-//     fetchGroups();
-//     fetchMeetups();
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1 className='text'>Welcome to the Dashboard</h1>
-//       <section>
-//         <h2>Groups</h2>
-//         <ul>
-//           {groups.map(group => (
-//             <li key={group.id}>
-//               <h3>{group.name}</h3>
-//               <p>{group.description}</p>
-//             </li>
-//           ))}
-//         </ul>
-//       </section>
-//       <section>
-//         <h2>Meetups</h2>
-//         <ul>
-//           {meetups.map(meetup => (
-//             <li key={meetup.id}>
-//               <h3>{meetup.name}</h3>
-//               <p>{meetup.date} at {meetup.time}</p>
-//             </li>
-//           ))}
-//         </ul>
-//       </section>
-//     </div>
-//   );
-// }
 import soccerImage from '../assets/images/soccer.jpeg';
 import artImage from '../assets/images/art2.webp';
 import musicImage from '../assets/images/music.jpeg';
@@ -62,6 +8,7 @@ import Footer from '../components/Footer';
 import play from '../assets/images/kids9.png';
 import { Carousel } from "react-bootstrap";
 import book from '../assets/images/book.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const meetups = [
   { id: 1, title: "Soccer Game", date: "Sept 25, 2024", location: "Central Park", time: "2:00PM", image: soccerImage },
@@ -74,7 +21,11 @@ const meetups = [
 
 export default function Dashboard() {
   
+const navigate = useNavigate();
 
+const handleJoinClick = () => {
+  navigate('/login');
+}
   return (
     <div className="p-2">
     
@@ -83,12 +34,12 @@ export default function Dashboard() {
        <GroupInterest />
       </div> 
 
-      <div className='m-4 p-4 d-flex w-100 align-items-center justify-content-center'>
-        <div className='w-75 .text-center'>
+      <div className='m-5 p-5 gap-4 d-flex w-100 align-items-center justify-content-center'>
+        <div className='w-60 .text-center'>
         <h1>Connecting Kids, Empowering Parents</h1>
         <p>A safe space for parents to organize meetups and help their kids bond over shared interests.</p>
        
-        <button className='bg-primary text-white'>Join KIDsConnect</button>
+        <button className='bg-primary text-white' onClick={handleJoinClick}>Join KIDsConnect</button>
       </div>
       <div className='w-25'><img src={kids} alt="" className='w-100'/></div>
       </div>

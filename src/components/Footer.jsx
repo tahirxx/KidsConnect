@@ -1,9 +1,9 @@
 
 export default function Footer() {
     return (
-        <footer className="bg-dark text-white p-4 my-2">
+        <footer className="bg-dark text-white py-5 my-2 ">
           <div className="container">
-            <div className="row">
+            <div className="row ">
               <div className="col-md-6">
                 <h5>About Us</h5>
                 <p>

@@ -16,12 +16,12 @@ export default function App() {
         <div className='content'>
           <Searchbar />
       <Routes>
-        {/* Route that always renders Dashboard */}
-        <Route path="/" element={<Dashboard />}>
-          <Route path="meetups" element={<MeetupPage />} />
-          <Route path="profile" element={<ProfileSetting />} />
-          <Route path="login" element={<LoginRegister />} />
-        </Route>
+     
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/meetups" element={<MeetupPage />} />
+          <Route path="/profile" element={<ProfileSetting />} />
+          <Route path="/login" element={<LoginRegister />} />
+       
       </Routes>
        </div>
       </div>
