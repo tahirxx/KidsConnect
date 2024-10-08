@@ -7,6 +7,7 @@ import musicImage from '../assets/images/music.jpeg';
 import kids from '../assets/images/KIDs4.png';
 import play from '../assets/images/kids9.png';
 import book from '../assets/images/book.jpg';
+import { useEffect, useState } from 'react';
 
 const meetups = [
   { id: 1, title: "Soccer Game", date: "Sept 25, 2024", location: "Central Park", time: "2:00PM", image: soccerImage },
@@ -31,6 +32,19 @@ const meetups = [
    ];
 
 export default function MeetupPage() {
+  const [meetups, setMeetups] = useState([]);
+
+  useEffect(() => {
+    async function fetchMeetups() {
+      const response = await fetch("/api/meetups");
+      const data = await response.json();
+      setMeetups(data);
+    }
+
+    fetchMeetups();
+    
+  }, []);
+
   return (
     <Container>
       <h1 className="my-4">Upcoming Meetups</h1>
