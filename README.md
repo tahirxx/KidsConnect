@@ -1,7 +1,7 @@
 KidsConnect:
 KidsConnect is a social platform that enables parents or guardians to arrange meetups for their kids based on shared interests. The app is designed to create safe, authentic group meetups that foster healthy connections among kids. Only parents have access to control and manage these meetups to ensure safety.
 
-Features:
+Features
 User Authentication: Parents can sign up, log in, and manage their profiles.
 Group Interests: Parents can browse and select groups based on their child's interests.
 Meetups: Organize and join meetups with other parents for group-based events.
